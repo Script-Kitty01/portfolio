@@ -23,10 +23,11 @@ const Contact = () => {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  // Web3Forms access key (safe to expose on the client). Set VITE_WEB3FORMS_ACCESS_KEY in your .env
-  const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as
-    | string
-    | undefined;
+  // Web3Forms access key (safe to expose on the client). Falls back to the real key
+  // so the form works on the deployed site even without the env var set.
+  const accessKey =
+    (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined) ||
+    "1a688ea2-8dca-48e2-8d1f-9998b5f9f41f";
 
   // Scroll to top when component mounts
   React.useEffect(() => {
