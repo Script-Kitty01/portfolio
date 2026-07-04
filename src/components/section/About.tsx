@@ -518,27 +518,42 @@ const About = () => {
                   style={{ maxWidth: "100%", height: "auto" }}
                 />
               </picture>
-              {/* Handwritten about-me note laid over the journal page */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-[14%] py-[12%]">
-                <p
-                  className="text-center"
-                  style={{
-                    fontFamily: "'DK Crayonista', cursive",
-                    color: "#6b4b52",
-                    fontSize: "clamp(0.85rem, 2.4vw, 1.5rem)",
-                    lineHeight: 1.5,
-                    maxWidth: "640px",
-                  }}
+              {/* Handwritten about-me note laid across the two journal pages,
+                  with a gap in the middle so text doesn't cross the spiral binding */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-[7%] py-[10%]">
+                <div
+                  className="flex w-full"
+                  style={{ maxWidth: "840px", gap: "15%" }}
                 >
-                  Hi, I'm Aamira! A CS student and cloud engineer who loves
-                  building AI-powered, cloud-native things. When I'm not
-                  architecting infrastructure or grinding LeetCode, you'll find
-                  me tinkering with distributed systems and drawing pixel cats.
-                  <br />
-                  <span style={{ fontSize: "0.85em", opacity: 0.75 }}>
-                    (tap to see more of me →)
-                  </span>
-                </p>
+                  <p
+                    style={{
+                      flex: 1,
+                      fontFamily: "'DK Crayonista', cursive",
+                      color: "#6b4b52",
+                      fontSize: "clamp(0.7rem, 1.9vw, 1.3rem)",
+                      lineHeight: 1.55,
+                      textAlign: "left",
+                    }}
+                  >
+                    Hi, I'm Aamira! A CS student and cloud engineer who loves
+                    building AI-powered, cloud-native things.
+                  </p>
+                  <p
+                    style={{
+                      flex: 1,
+                      fontFamily: "'DK Crayonista', cursive",
+                      color: "#6b4b52",
+                      fontSize: "clamp(0.7rem, 1.9vw, 1.3rem)",
+                      lineHeight: 1.55,
+                      textAlign: "left",
+                    }}
+                  >
+                    When I'm not architecting infrastructure or grinding
+                    LeetCode, you'll find me tinkering with distributed systems
+                    and drawing pixel cats.{" "}
+                    <span style={{ opacity: 0.75 }}>(tap to see more →)</span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
