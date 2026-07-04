@@ -1,14 +1,14 @@
 @font-face {
-  font-family: 'Punk Babe';
-  src: url('./assets/punkbabe/PUNKBABE TRIAL.ttf') format('truetype');
+  font-family: "Punk Babe";
+  src: url("./assets/punkbabe/PUNKBABE TRIAL.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'DK Crayonista';
-  src: url('./assets/dk_crayonista/DK Crayonista.ttf') format('truetype');
+  font-family: "DK Crayonista";
+  src: url("./assets/dk_crayonista/DK Crayonista.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -17,22 +17,22 @@
 :root {
   /* Color Palette - Updated to use centralized color system */
   /* Pink palette - from colors.ts */
-  --color-pink-50: #FFF5F7;        /* Light pink background */
-  --color-pink-100: #FAE8ED;       /* Lavender blush */
-  --color-pink-200: #FDD5DF;       /* Mimi pink */
-  --color-pink-300: #EABEC3;       /* Main dusty pink */
-  --color-pink-400: #D9A5AC;       /* Darker dusty pink */
-  --color-pink-500: #C88B95;       /* Even darker dusty pink */
-  --color-pink-600: #B8727C;       /* Strong dusty pink */
-  --color-pink-700: #A6707B;       /* Navigation text */
-  --color-pink-800: #8B5A65;       /* Main text pink (WCAG AA) */
+  --color-pink-50: #fff5f7; /* Light pink background */
+  --color-pink-100: #fae8ed; /* Lavender blush */
+  --color-pink-200: #fdd5df; /* Mimi pink */
+  --color-pink-300: #eabec3; /* Main dusty pink */
+  --color-pink-400: #d9a5ac; /* Darker dusty pink */
+  --color-pink-500: #c88b95; /* Even darker dusty pink */
+  --color-pink-600: #b8727c; /* Strong dusty pink */
+  --color-pink-700: #a6707b; /* Navigation text */
+  --color-pink-800: #8b5a65; /* Main text pink (WCAG AA) */
 
   /* Dark theme colors */
-  --color-dark-800: #1E293B;       /* Very dark gray */
-  --color-dark-900: #0F172A;       /* Almost black */
+  --color-dark-800: #1e293b; /* Very dark gray */
+  --color-dark-900: #0f172a; /* Almost black */
 
   /* Base colors */
-  --color-white: #FFFFFF;
+  --color-white: #ffffff;
   --color-transparent: transparent;
 
   /* Legacy variables for backward compatibility */
@@ -58,7 +58,9 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:visited, a:active {
+a:hover,
+a:visited,
+a:active {
   color: inherit;
   text-decoration: none;
 }
@@ -80,7 +82,7 @@ select:focus {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #B8727C; /* Darker dusty pink for better contrast */
+  background: #b8727c; /* Darker dusty pink for better contrast */
   color: white;
   padding: 8px 16px;
   border-radius: 0 0 4px 0;
@@ -101,9 +103,9 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--white);
@@ -174,26 +176,16 @@ body {
   display: none !important;
 }
 
-.dark .navigation {
-  background: rgba(10, 15, 27, 0.4);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(234, 190, 195, 0.1);
-  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
-}
-
-.navigation.scrolled {
-  background: rgba(255, 232, 239, 0.6);
-  border-bottom: 1px solid rgba(255, 194, 209, 0.2);
-  box-shadow: 0 4px 30px rgba(255, 194, 209, 0.12);
-}
-
+/* The floating pill (.nav-pill) now carries all glass styling.
+   Keep the full-width .navigation wrapper fully transparent so no band shows. */
+.dark .navigation,
+.navigation.scrolled,
 .dark .navigation.scrolled {
-  background: rgba(10, 15, 27, 0.6);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(234, 190, 195, 0.15);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .nav-container {
@@ -205,23 +197,41 @@ body {
   padding: 0 2rem;
 }
 
+/* Floating pill navbar */
+.nav-pill {
+  max-width: 980px;
+  padding: 0.55rem 0.75rem 0.55rem 1.5rem;
+}
+
 .signature-name {
-  font-family: 'Punk Babe', sans-serif;
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, var(--color-pink-500) 0%, var(--color-pink-600) 100%);
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 1.85rem;
+  background: linear-gradient(
+    135deg,
+    var(--color-pink-500) 0%,
+    var(--color-pink-600) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: var(--color-pink-500);
   margin: 0;
-  font-weight: normal;
-  letter-spacing: 2px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   filter: drop-shadow(0 2px 4px rgba(200, 139, 149, 0.3));
   flex-shrink: 0;
   line-height: 1;
-  padding-top: 0.2rem;
   /* Button reset styles for accessibility */
   padding: 0.2rem 0 0 0;
   text-align: left;
+  transition: opacity 0.2s ease;
+}
+
+.signature-name:hover {
+  opacity: 0.8;
 }
 
 /* Apply gradient text effect only when supported */
@@ -259,7 +269,7 @@ body {
 }
 
 .nav-tab::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -313,7 +323,11 @@ body {
 .section h2 {
   font-size: 3rem;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, var(--dusty-pink) 0%, var(--dusty-pink-darker) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--dusty-pink) 0%,
+    var(--dusty-pink-darker) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -372,7 +386,11 @@ body {
 }
 
 .hero-subtitle span {
-  background: linear-gradient(135deg, var(--dusty-pink) 0%, var(--dusty-pink-darker) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--dusty-pink) 0%,
+    var(--dusty-pink-darker) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -382,7 +400,11 @@ body {
 
 /* Theme-specific overrides for hero subtitle */
 .hero-subtitle-light {
-  background: linear-gradient(135deg, var(--color-pink-600) 0%, var(--color-pink-800) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--color-pink-600) 0%,
+    var(--color-pink-800) 100%
+  ) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -391,7 +413,11 @@ body {
 }
 
 .hero-subtitle-dark {
-  background: linear-gradient(135deg, var(--color-pink-300) 0%, var(--color-pink-500) 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--color-pink-300) 0%,
+    var(--color-pink-500) 100%
+  ) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -428,7 +454,7 @@ body {
 }
 
 .hero-action-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -451,17 +477,17 @@ body {
 
 /* Dark mode styles for hero action buttons */
 .dark .hero-action-btn {
-  color: #FDD5DF;
-  border-color: #EABEC3;
+  color: #fdd5df;
+  border-color: #eabec3;
 }
 
 .dark .hero-action-btn::before {
-  background: #EABEC3;
+  background: #eabec3;
 }
 
 .dark .hero-action-btn:hover {
-  color: #0A0F1B;
-  border-color: #FDD5DF;
+  color: #0a0f1b;
+  border-color: #fdd5df;
 }
 
 .hero-description {
@@ -485,7 +511,8 @@ body {
 }
 
 @keyframes twinkle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.8;
     transform: rotate(0deg);
   }
@@ -511,7 +538,11 @@ body {
 }
 
 .scroll-down-btn {
-  background: linear-gradient(135deg, var(--dusty-pink) 0%, var(--dusty-pink-darker) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--dusty-pink) 0%,
+    var(--dusty-pink-darker) 100%
+  );
   color: var(--white);
   border: none;
   padding: 0.5rem 1.2rem;
@@ -535,7 +566,11 @@ body {
 
 /* Project Buttons */
 .project-btn {
-  background: linear-gradient(135deg, var(--dusty-pink) 0%, var(--dusty-pink-darker) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--dusty-pink) 0%,
+    var(--dusty-pink-darker) 100%
+  );
   color: var(--white);
   border: none;
   padding: 0.75rem 1.25rem; /* Increased for touch targets */
@@ -574,8 +609,8 @@ body {
 
 .dark .project-btn-outline {
   background: rgb(31, 41, 55);
-  color: #EABEC3;
-  border-color: #D9A5AC;
+  color: #eabec3;
+  border-color: #d9a5ac;
 }
 
 .project-btn-outline:focus {
@@ -608,10 +643,12 @@ body {
 }
 
 @keyframes blink {
-  0%, 50% {
+  0%,
+  50% {
     opacity: 1;
   }
-  51%, 100% {
+  51%,
+  100% {
     opacity: 0;
   }
 }
@@ -631,29 +668,33 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .signature-name {
-    font-size: 2rem;
+    font-size: 1.55rem;
   }
-  
+
   .main-content {
     padding-top: 70px;
   }
-  
+
   .nav-container {
     padding: 0 1rem;
   }
-  
+
+  .nav-pill {
+    padding: 0.5rem 0.75rem 0.5rem 1.25rem;
+  }
+
   /* Hide desktop nav on mobile */
   .desktop-nav {
     display: none !important;
   }
-  
+
   /* Show mobile menu button on mobile */
   .mobile-menu-btn {
     display: block !important;
     min-width: 44px;
     min-height: 44px;
   }
-  
+
   /* Mobile menu styles */
   .mobile-menu {
     position: absolute;
@@ -664,44 +705,44 @@ body {
     overflow: hidden;
     transition: max-height 0.3s ease;
   }
-  
+
   .mobile-menu.open {
     max-height: 400px;
   }
-  
+
   .mobile-nav-tab {
     min-height: 44px;
     width: 100%;
   }
-  
+
   .mobile-nav-tab:hover {
     background: rgba(234, 190, 195, 0.1);
   }
-  
+
   .dark .mobile-nav-tab:hover {
     background: rgba(234, 190, 195, 0.05);
   }
-  
+
   .section h2 {
     font-size: 2rem;
   }
-  
+
   .section p {
     font-size: 1rem;
   }
-  
+
   .section-content {
     padding: 2rem;
   }
-  
+
   .ascii-text {
     font-size: clamp(0.4rem, 1.5vw, 0.8rem);
   }
-  
+
   .hero-subtitle {
     font-size: 1.2rem;
   }
-  
+
   .hero-description {
     font-size: 1rem;
   }
@@ -723,6 +764,10 @@ body {
     width: 100% !important;
     max-width: 100% !important;
   }
+
+  .nav-pill {
+    padding: 0.5rem 0.75rem 0.5rem 1rem !important;
+  }
 }
 
 /* Extra small screens (iPhone SE and similar) */
@@ -731,8 +776,12 @@ body {
     padding: 0 0.25rem !important;
   }
 
+  .nav-pill {
+    padding: 0.45rem 0.6rem 0.45rem 0.9rem !important;
+  }
+
   .signature-name {
-    font-size: 1.75rem !important;
+    font-size: 1.4rem !important;
   }
 
   .mobile-menu-btn {
@@ -793,5 +842,24 @@ body {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* Konami code easter egg animations */
+@keyframes konami-fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.85;
+  }
+}
+
+@keyframes konami-pop {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 }

@@ -3,6 +3,25 @@ import DomeGallery from "../ui/domegallery";
 import { useDarkMode } from "../../contexts/DarkModeContext";
 import { useThemeColors } from "../../hooks/useThemeColors";
 import { withAlpha } from "../../hooks/useThemeColors";
+import { techStackIcons } from "../../assets/techstack";
+
+// Your skills - edit this list to add or remove technologies.
+// Only icons that exist in src/assets/techstack are available.
+const skills = [
+  { src: techStackIcons.CPP, alt: "C++" },
+  { src: techStackIcons.JavaLight, alt: "Java" },
+  { src: techStackIcons.TypeScript, alt: "TypeScript" },
+  { src: techStackIcons.JavaScript, alt: "JavaScript" },
+  { src: techStackIcons.ReactLight, alt: "React" },
+  { src: techStackIcons.NodeJSLight, alt: "Node.js" },
+  { src: techStackIcons.HTML, alt: "HTML" },
+  { src: techStackIcons.CSS, alt: "CSS" },
+  { src: techStackIcons.AWSLight, alt: "AWS" },
+  { src: techStackIcons.Docker, alt: "Docker" },
+  { src: techStackIcons.RedisLight, alt: "Redis" },
+  { src: techStackIcons.GithubLight, alt: "GitHub" },
+  { src: techStackIcons.Postman, alt: "Postman" },
+];
 
 const Skills = () => {
   const [scale, setScale] = useState(0.5);
@@ -29,11 +48,12 @@ const Skills = () => {
         const maxDistance = windowHeight / 2 + sectionHeight / 2;
 
         // Smooth curve that peaks when section is centered
-        visibilityRatio = 1 - (distanceFromCenter / maxDistance);
+        visibilityRatio = 1 - distanceFromCenter / maxDistance;
         visibilityRatio = Math.max(0, Math.min(1, visibilityRatio));
 
         // Apply easing curve for more natural growth
-        visibilityRatio = visibilityRatio * visibilityRatio * (3 - 2 * visibilityRatio);
+        visibilityRatio =
+          visibilityRatio * visibilityRatio * (3 - 2 * visibilityRatio);
       }
 
       // Scale from 0.5 to 1 instead of 0 to 1 for better starting size
@@ -43,43 +63,59 @@ const Skills = () => {
       setScale(finalScale);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll(); // Initial calculation
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <section ref={sectionRef} id="skills" className="min-h-screen py-20 relative" style={{
-      background: themeColors.background.sections?.skills || themeColors.background.gradient,
-      transition: 'background 0.3s ease-in-out'
-    }}>
+    <section
+      ref={sectionRef}
+      id="skills"
+      className="min-h-screen py-20 relative"
+      style={{
+        background:
+          themeColors.background.sections?.skills ||
+          themeColors.background.gradient,
+        transition: "background 0.3s ease-in-out",
+      }}
+    >
       {/* Gradient overlay for smooth transition from previous section */}
-      <div 
+      <div
         className="absolute top-0 left-0 right-0 pointer-events-none"
         style={{
-          height: '300px',
-          background: isDarkMode 
+          height: "300px",
+          background: isDarkMode
             ? `linear-gradient(180deg, ${themeColors.background.gradientEnd} 0%, transparent 100%)`
             : `linear-gradient(180deg, ${themeColors.colors.pink[25]} 0%, transparent 100%)`,
-          zIndex: 1
+          zIndex: 1,
         }}
       />
       <div className="container mx-auto px-6 relative" style={{ zIndex: 2 }}>
-        <h2 className="text-4xl font-bold text-center mb-12" style={{ color: isDarkMode ? themeColors.colors.white : themeColors.colors.pink[500] }}>Skills</h2>
+        <h2
+          className="text-4xl font-bold text-center mb-12"
+          style={{
+            color: isDarkMode
+              ? themeColors.colors.white
+              : themeColors.colors.pink[500],
+          }}
+        >
+          Skills
+        </h2>
         <div
           ref={domeContainerRef}
           className="relative w-full"
           style={{
-            height: '600px',
+            height: "600px",
             transform: `scale(${scale})`,
-            transformOrigin: 'center center',
-            willChange: 'transform',
+            transformOrigin: "center center",
+            willChange: "transform",
           }}
         >
-          <DomeGallery />
+          <DomeGallery images={skills} />
           {/* Faded edges overlay with performance-optimized blending */}
           <div
             className="absolute inset-0 pointer-events-none"
@@ -87,8 +123,10 @@ const Skills = () => {
               background: isDarkMode
                 ? `radial-gradient(ellipse at center, transparent 40%, ${withAlpha(themeColors.colors.dark[900], 0.1)} 70%, ${withAlpha(themeColors.colors.dark[900], 0.6)} 90%, ${withAlpha(themeColors.colors.dark[900], 0.8)} 100%)`
                 : `radial-gradient(ellipse at center, transparent 40%, ${withAlpha(themeColors.colors.pink[50], 0.1)} 70%, ${withAlpha(themeColors.colors.pink[50], 0.6)} 90%, ${withAlpha(themeColors.colors.pink[50], 0.8)} 100%)`,
-              maskImage: 'radial-gradient(ellipse at center, black 50%, transparent 85%)',
-              WebkitMaskImage: 'radial-gradient(ellipse at center, black 50%, transparent 85%)',
+              maskImage:
+                "radial-gradient(ellipse at center, black 50%, transparent 85%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse at center, black 50%, transparent 85%)",
             }}
           />
         </div>

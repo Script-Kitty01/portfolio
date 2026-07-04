@@ -1,83 +1,92 @@
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Calendar, MapPin } from 'lucide-react';
-import { useDarkMode } from '../../contexts/DarkModeContext';
-import { useThemeColors } from '../../hooks/useThemeColors';
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Calendar, MapPin } from "lucide-react";
+import { useDarkMode } from "../../contexts/DarkModeContext";
+import { useThemeColors } from "../../hooks/useThemeColors";
 
 const Experience = () => {
   const { isDarkMode } = useDarkMode();
   const themeColors = useThemeColors();
   const experiences = [
     {
-      title: "Your Job Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "Month Year - Month Year",
+      title: "Cloud Engineer & Project Lead",
+      company: "Cyra AI - SOC Analysis Startup",
+      location: "Remote, India",
+      period: "Jan 2026 - Present",
       description: [
-        "Description of your role and accomplishments",
-      ]
+        "Designed the MVP for an AI-powered security agent for SOC analysis, defining product scope, technical architecture, and the revenue model used in investor pitches.",
+        "Architected scalable, fault-tolerant cloud infrastructure on GCP (GKE, Cloud Run, Cloud SQL, Vertex AI) with centralized logging.",
+        "Led migration of production workloads from AWS to GCP and transitioned managed services to open-source NGINX, improving scalability while optimizing operational cost.",
+      ],
     },
-    {
-      title: "Your Job Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "Month Year - Month Year",
-      description: [
-        "Description of your role and accomplishments",
-        "Another accomplishment or responsibility",
-        "One more key achievement",
-      ]
-    },
-    {
-      title: "Your Job Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "Month Year - Month Year",
-      description: [
-        "Description of your role and accomplishments",
-        "Another accomplishment or responsibility",
-        "One more key achievement",
-      ]
-    }
   ];
 
   return (
-    <section id="experience" className="py-8 relative" style={{
-      background: themeColors.background.sections?.experience || themeColors.background.gradient,
-      transition: 'background 0.3s ease-in-out'
-    }}>
+    <section
+      id="experience"
+      className="py-8 relative"
+      style={{
+        background:
+          themeColors.background.sections?.experience ||
+          themeColors.background.gradient,
+        transition: "background 0.3s ease-in-out",
+      }}
+    >
       {/* Subtle gradient overlay for top edge blending */}
       <div
         className="absolute top-0 left-0 right-0 pointer-events-none"
         style={{
-          height: '60px',
+          height: "60px",
           background: isDarkMode
             ? `linear-gradient(180deg, ${themeColors.background.gradientEnd} 0%, transparent 100%)`
             : `linear-gradient(180deg, ${themeColors.colors.pink[25]} 0%, transparent 100%)`,
-          zIndex: 1
+          zIndex: 1,
         }}
       />
       {/* Subtle gradient overlay for bottom edge blending to white divider */}
       <div
         className="absolute bottom-0 left-0 right-0 pointer-events-none"
         style={{
-          height: '60px',
+          height: "60px",
           background: isDarkMode
             ? `linear-gradient(180deg, transparent 0%, ${themeColors.background.gradientEnd} 100%)`
             : `linear-gradient(180deg, transparent 0%, ${themeColors.colors.white} 100%)`,
-          zIndex: 1
+          zIndex: 1,
         }}
       />
       <div className="container mx-auto px-6 relative" style={{ zIndex: 2 }}>
-        <h2 className="text-4xl font-bold text-center mb-6" style={{ color: isDarkMode ? themeColors.colors.white : themeColors.colors.pink[500] }}>Experience</h2>
+        <h2
+          className="text-4xl font-bold text-center mb-6"
+          style={{
+            color: isDarkMode
+              ? themeColors.colors.white
+              : themeColors.colors.pink[500],
+          }}
+        >
+          Experience
+        </h2>
 
         <div className="max-w-4xl mx-auto space-y-4">
           {experiences.map((exp, index) => (
-            <Card key={index} className="border-2 border-pink-100 dark:border-gray-700 hover:border-pink-200 dark:hover:border-gray-600 transition-all duration-300 hover:shadow-lg bg-white/95 dark:bg-gray-800/95">
+            <Card
+              key={index}
+              className="border-2 border-pink-100 dark:border-gray-700 hover:border-pink-200 dark:hover:border-gray-600 transition-all duration-300 hover:shadow-lg bg-white/95 dark:bg-gray-800/95"
+            >
               <CardHeader className="pb-2">
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle className="text-2xl" style={{ color: isDarkMode ? themeColors.colors.pink[300] : themeColors.colors.pink[400] }}>{exp.title}</CardTitle>
-                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-400 mt-1">{exp.company}</p>
+                    <CardTitle
+                      className="text-2xl"
+                      style={{
+                        color: isDarkMode
+                          ? themeColors.colors.pink[300]
+                          : themeColors.colors.pink[400],
+                      }}
+                    >
+                      {exp.title}
+                    </CardTitle>
+                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-400 mt-1">
+                      {exp.company}
+                    </p>
                   </div>
                   <div className="text-right">
                     <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
@@ -95,8 +104,22 @@ const Experience = () => {
                 <ul className="space-y-1">
                   {exp.description.map((item, i) => (
                     <li key={i} className="flex items-start">
-                      <span className="mr-2" style={{ color: themeColors.primary }}>•</span>
-                      <span className="text-sm" style={{ color: isDarkMode ? themeColors.colors.dark[200] : themeColors.colors.dark[600] }}>{item}</span>
+                      <span
+                        className="mr-2"
+                        style={{ color: themeColors.primary }}
+                      >
+                        •
+                      </span>
+                      <span
+                        className="text-sm"
+                        style={{
+                          color: isDarkMode
+                            ? themeColors.colors.dark[200]
+                            : themeColors.colors.dark[600],
+                        }}
+                      >
+                        {item}
+                      </span>
                     </li>
                   ))}
                 </ul>
